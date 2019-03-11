@@ -14,17 +14,26 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.Contact SET Phone = 9090909, MobilePhone = 0808088 WHERE FirstName = "venkatesh" AND LastName = "malasani"',
-            [req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim()],
+            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
+            [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
-                done();
+                if (err != null || result.rowCount == 0) {
+                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)',
+                  [req.body.Markup.trim(), req.body.Name.trim()],
+                  function(err, result) {
+                    done();
                     if (err) {
-			alert('in err'+err.message);
                         res.status(400).json({error: err.message});
                     }
+                    else {
+                        // this will still cause jquery to display 'Record updated!'
+                        // eventhough it was inserted
+                        res.json(result);
+                    }
+                  });
+                }
                 else {
                     done();
-                    alert('result'+result);                   
                     res.json(result);
                 }
             }
