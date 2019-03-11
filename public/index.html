@@ -15,6 +15,7 @@
     <script>
         $(function() {
             $("#phoneChangerForm").submit(function(event) {
+		alert('in submit function');
                 event.preventDefault();
 
                 var errorMessage = $("#errorMessage");
@@ -25,8 +26,8 @@
 
                 var id = $("#id").val();
                 var Name = $("#Name").val();
-                var Markup = $("#Markup").val();
-
+                var Markup = $("#markup").val();
+		alert('in submit function before if');
                 if (Name.length == 0 || id.length == 0 || Markup.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
@@ -43,9 +44,10 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
+			    alert('in submit function success');
                             $("#id").val("");
                             $("#Name").val("");
-                            $("#Markup").val("");
+                            $("#markup").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
