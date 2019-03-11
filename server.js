@@ -10,24 +10,28 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.post('/update', function(req, res) {
+alert('in update');
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
+	alert('before query');
         conn.query(
             'UPDATE salesforce.ApexPage SET Markup ="<apex:page>Hello</apex:page>" where Name="Sample"',
             [req.body.Name.trim(), req.body.Markup.trim()],
             function(err, result) {
                 done();
                     if (err) {
+			alert('in err'+err.message);
                         res.status(400).json({error: err.message});
                     }
                 else {
                     done();
-                    alert(res.json(result));                   
+                    alert('result'+result);                   
                     res.json(result);
                 }
             }
         );
+	alert('after query');
     });
 });
 
