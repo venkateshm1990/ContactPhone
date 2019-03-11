@@ -54,7 +54,9 @@
                         },
                         error: function(err) {
                             alert('in error'+err);
+                            alert('in errror 2'+err.responseJSON.error);
                             errorMessage.text(err.responseJSON.error);
+                            
                             error.show();
                         }
                     })
