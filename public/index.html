@@ -54,6 +54,7 @@
                         },
                         error: function(err) {
                             alert('in error'+err);
+                            alert('in error new'+JSON.stringify(err));
                             alert('in errror 2'+err.responseJSON.error);
                             errorMessage.text(err.responseJSON.error);
                             
