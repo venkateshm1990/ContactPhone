@@ -23,6 +23,7 @@ app.post('/update', function(req, res) {
                     }
                 else {
                     done();
+                    console.debug(res.json(result));                   
                     res.json(result);
                 }
             }
