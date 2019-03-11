@@ -15,7 +15,6 @@
     <script>
         $(function() {
             $("#phoneChangerForm").submit(function(event) {
-		alert('in submit function');
                 event.preventDefault();
 
                 var errorMessage = $("#errorMessage");
@@ -24,40 +23,37 @@
 
                 $("#message").hide();
 
-                
-                var Name = $("#Name").val();
-                var Markup = $("#markup").val();
-		alert('in submit function before if');
-                if (Name.length == 0 || Markup.length == 0) {
+                var firstName = $("#firstName").val();
+                var lastName = $("#lastName").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+
+                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
                 else {
-                    alert('in else');
                     $.ajax({
                         url: event.target.action,
                         method: event.target.method,
                         data: JSON.stringify({
-                           
-                            Name: Name,
-                            Markup: Markup,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            phone: phone
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
-			    alert('in submit function success');
-                            
-                            $("#Name").val("");
-                            $("#markup").val("");
+                            $("#firstName").val("");
+                            $("#lastName").val("");
+                            $("#email").val("");
+                            $("#phone").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
                         error: function(err) {
-                            alert('in error'+err);
-                            alert('in error new'+JSON.stringify(err));
-                            alert('in errror 2'+err.responseJSON.error);
                             errorMessage.text(err.responseJSON.error);
-                            
                             error.show();
                         }
                     })
@@ -71,7 +67,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Markup Changer</a>
+                <a class="navbar-brand" href="/">Phone Number Changer</a>
             </div>
         </div>
     </nav>
@@ -80,16 +76,24 @@
         <form id="phoneChangerForm" action="/update" method="post" style="width: 400px">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Update Markup</h3>
+                    <h3 class="panel-title">Update Your Phone Number</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="markup">Markup</label>
-                        <input type="text" class="form-control" id="markup" placeholder="For verification" required>
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="For verification" required>
                     </div>
                     <div class="form-group">
-                        <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="For verification" required>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="For verification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="For verification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -102,7 +106,7 @@
                         <span class="sr-only">Error:</span>
                         <span id="errorMessage"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Markup</button>
+                    <button type="submit" class="btn btn-primary">Update Phone Number</button>
                 </div>
             </div>
         </form>
