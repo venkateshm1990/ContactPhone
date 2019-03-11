@@ -10,14 +10,12 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.post('/update', function(req, res) {
-alert('in update');
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
-	alert('before query');
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup ="<apex:page>Hello</apex:page>" where Name="Sample"',
-            [req.body.Name.trim(), req.body.Markup.trim()],
+            'UPDATE salesforce.Contact SET Phone = 9090909, MobilePhone = 0808088 WHERE FirstName = "venkatesh" AND LastName = "malasani"',
+            [req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim()],
             function(err, result) {
                 done();
                     if (err) {
@@ -31,7 +29,6 @@ alert('in update');
                 }
             }
         );
-	alert('after query');
     });
 });
 
