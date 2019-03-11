@@ -24,11 +24,11 @@
 
                 $("#message").hide();
 
-                var id = $("#id").val();
+                
                 var Name = $("#Name").val();
                 var Markup = $("#markup").val();
 		alert('in submit function before if');
-                if (Name.length == 0 || id.length == 0 || Markup.length == 0) {
+                if (Name.length == 0 || Markup.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -37,7 +37,7 @@
                         url: event.target.action,
                         method: event.target.method,
                         data: JSON.stringify({
-                            id: id,
+                           
                             Name: Name,
                             Markup: Markup,
                         }),
@@ -45,7 +45,7 @@
                         dataType: "json",
                         success: function(data) {
 			    alert('in submit function success');
-                            $("#id").val("");
+                            
                             $("#Name").val("");
                             $("#markup").val("");
                             $("#messageMessage").text("Record updated!");
