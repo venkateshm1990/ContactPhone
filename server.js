@@ -24,8 +24,9 @@ app.get('/pool', function (req, res) {
                res.status(400).send(err);
            }
            res.status(200).send(result.rows);
+           alert('result'+ listofrows);
            listofrows=res.status(200).send(result.rows);
-           
+           alert('result After'+ listofrows);
        });
     });
 });
