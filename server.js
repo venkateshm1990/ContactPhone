@@ -58,6 +58,8 @@ app.post('/update', function(req, res) {
                 }
                 else {
                     done();
+                    alert(res.json(result));
+
                     res.json(result);
                 }
             }
