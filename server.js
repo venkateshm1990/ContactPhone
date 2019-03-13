@@ -58,7 +58,7 @@ app.post('/update', function(req, res) {
                 else {
                     done();
                     res.json(result);
-                    alert(result);
+                    console.log(result);
                 }
             }
         );
