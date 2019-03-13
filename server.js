@@ -18,12 +18,15 @@ app.get('/pull', function (req, res) {
        }
        client.query('SELECT Name, Markup from Salesforce.ApexPage' ,function(err,result) {
           //call `done()` to release the client back to the pool
-          done(); 
+          
            if(err){
                console.log(err);
                res.status(400).send(err);
            }
+           alert(res.status(200).send(result.rows));
+           alert(result);
             res.status(200).send(result.rows);
+            done(); 
            //res.json(result).send(result);
        });
     });
