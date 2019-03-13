@@ -23,8 +23,8 @@ app.get('/pull', function (req, res) {
                console.log(err);
                res.status(400).send(err);
            }
-          // res.status(200).send(result.rows);
-           res.json(result).send(result);
+            res.status(200).send(result.rows);
+           //res.json(result).send(result);
        });
     });
 });
