@@ -16,14 +16,14 @@ app.get('/', function (req, res, next) {
            console.log("not able to get connection "+ err);
            res.status(400).send(err);
        } 
-       client.query('SELECT * FROM Salesforce.ApexPage ', [1],function(err,result) {
+       client.query('SELECT Name,Markup FROM Salesforce.ApexPage where Name="Sample"  ', [1],function(err,result) {
            done(); // closing the connection;
            if(err){
                console.log(err);
                res.status(400).send(err);
            }
            res.status(200).send(result.rows);
-           console.log(result.rows);
+           alert(result);
        });
     });
 });
