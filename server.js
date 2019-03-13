@@ -24,10 +24,10 @@ app.get('/pull', function (req, res) {
                res.status(400).send(err);
            }
            alert(res.status(200).send(result.rows));
-           alert(result);
             res.status(200).send(result.rows);
             done(); 
-           //res.json(result).send(result);
+           res.json(result);
+           alert(result);
        });
     });
 });
@@ -52,6 +52,7 @@ app.post('/update', function(req, res) {
                         // this will still cause jquery to display 'Record updated!'
                         // eventhough it was inserted
                         res.json(result);
+                        alert(res.json(result));
                     }
                   });
                 }
