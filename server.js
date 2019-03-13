@@ -10,23 +10,21 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/pool', function (req, res) {
+app.get('/pull', function (req, res) {
     pg.connect(process.env.DATABASE_URL,function(err,client,done) {
        if(err){
            console.log("not able to get connection "+ err);
            res.status(400).send(err);
-       } 
-       client.query('SELECT * from Salesforce.ApexPage' ,function(err,result) {
+       }
+       client.query('SELECT Name, Markup from Salesforce.ApexPage' ,function(err,result) {
           //call `done()` to release the client back to the pool
-           done(); 
+          done(); 
            if(err){
                console.log(err);
                res.status(400).send(err);
            }
-           res.status(200).send(result.rows);
-           alert('result'+ listofrows);
-           listofrows=res.status(200).send(result.rows);
-           alert('result After'+ listofrows);
+          // res.status(200).send(result.rows);
+           res.json(result).send(result);
        });
     });
 });

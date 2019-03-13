@@ -12,6 +12,36 @@
             padding-top: 60px;
         }
     </style>
+   <script>
+    $(function() {
+        $("#GetAll").submit(function(event) {
+            event.preventDefault();
+                $.ajax({
+                    url: event.target.action,
+                    method: event.target.method,
+                    data: JSON.stringify({
+                        Name: Name,
+                        Markup: Markup,
+                       
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(data) {
+                        $.each(data, function(key, val) {
+                            var tr=$('<tr></tr>');
+                            $.each(val, function(k, v){
+                                $('<td>'+v+'</td>').appendTo(tr);
+                            });
+                            tr.appendTo('#display');
+                        });
+                    },
+                    
+                })
+            
+        });
+    });
+
+   </script>
     <script>
         $(function() {
             $("#ApexPageMarkerChangerForm").submit(function(event) {
@@ -100,9 +130,11 @@
                 </div>
             </div>
         </form>
+        <form id="GetAll" action="/pull" method="GET" >
+            <table border='1' id="display"></table>
+        </form>
     </div>
     <div>
-        
     </div>
 </body>
 </html>
