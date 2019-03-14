@@ -16,25 +16,27 @@
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
-                $.ajax({
-                    url: event.target.action,
-                    method: event.target.method,
-                    data: JSON.stringify({
-                        Name: Name,
-                        Markup: Markup,
-                       
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(data) {
-                        alert(JSON.stringify({
-                            Name: Name,
-                            Markup: Markup,
-                           
-                        }));
-                    },
-                    
-                })
+               $.ajax({
+                url: event.target.action,
+                method: event.target.method,
+                data: JSON.stringify({
+                    Name: Name,
+                    Markup: Markup,
+                   
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var result = $('<div />').append(data).find('#index').html();
+                    $('#index').html(result);
+                },
+                error: function (xhr, status) {
+                    alert("Sorry, there was a problem!");
+                },
+                complete: function (xhr, status) {
+                    //$('#showresults').slideDown('slow')
+                }
+            });
             
         });
     });
