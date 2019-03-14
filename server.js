@@ -4,35 +4,14 @@ var pg = require('pg');
 
 var app = express();
 var listofrows=[];
-var pageschema=pg.Schema({
-    Name: String,
-    Markup: String,
-     });
+
 
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/pull', function (req, res, next) {
-    pg.connect(process.env.DATABASE_URL,function(err,client,done) {
-       if(err){
-           console.log("not able to get connection "+ err);
-           res.status(400).send(err);
-       } 
-       client.query('SELECT Name,Markup FROM Salesforce.ApexPage where Name="Sample"  ', [1],function(err,result) {
-           done(); // closing the connection;
-           if(err){
-               console.log(err);
-               res.status(400).send(err);
-           }
-           res.status(200).send(res);
-           res.sendFile('index.html');
-       });
-    });
-    res.sendFile('index.html');
 
-});
  
 app.listen(4000, function () {
     console.log('Server is running.. on Port 4000');
