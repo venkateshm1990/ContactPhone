@@ -31,7 +31,7 @@
                     $('#index').html(result);
                 },
                 error: function (xhr, status) {
-                    alert("Sorry, there was a problem!");
+                    alert("Sorry, there was a problem!"+errorMessage);
                 },
                 complete: function (xhr, status) {
                     //$('#showresults').slideDown('slow')
