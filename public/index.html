@@ -27,7 +27,7 @@
                 contentType: "application/html; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    var result = $('<div />').append(data).find('#index').html();
+                    var result = $('#display').append(data).find('#index').html();
                     $('#index').html(result);
                 },
                 error: function (xhr, status) {
