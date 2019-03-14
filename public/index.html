@@ -13,6 +13,7 @@
         }
     </style>
    <script>
+        var ul = document.getElementById("ul");
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
@@ -24,11 +25,10 @@
                     Markup: Markup,
                    
                 }),
-                contentType: "application/html; charset=utf-8",
+                contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    var result = $('#display').append(data).find('#index').html();
-                    $('#index').html(result);
+                    alert(data);
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem!"+errorMessage);
@@ -132,7 +132,11 @@
         </form>
         <form id="GetAll" action="/" method="get" >
             <button type="submit" class="btn btn-primary">GetAll</button>
-            <table border='1' id="display"></table>
+            <ul id="ul">
+                <li id="list">
+
+                </li>
+            </ul>
         </form>
     </div>
     <div>

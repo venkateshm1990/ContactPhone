@@ -17,10 +17,13 @@ app.get('/getall', function(req,res){
         conn.query('Select * from Salesforce.ApexPage',[2],function(err,result){
             if(err){
                 console.log(err);
+                alert('error'+err);
                 res.status(400).send(err);
             }
             res.status(200).send(result.rows);
+            alert('result'+result);
             res.json(results);
+
         });
 
 });
