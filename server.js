@@ -4,13 +4,17 @@ var pg = require('pg');
 
 var app = express();
 var listofrows=[];
+var pageschema=pg.Schema({
+    Name: String,
+    Markup: String,
+     });
 
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/', function (req, res, next) {
+app.get('/pull', function (req, res, next) {
     pg.connect(process.env.DATABASE_URL,function(err,client,done) {
        if(err){
            console.log("not able to get connection "+ err);
@@ -22,10 +26,12 @@ app.get('/', function (req, res, next) {
                console.log(err);
                res.status(400).send(err);
            }
-           res.status(200).send(result.rows);
-           alert(result);
+           res.status(200).send(res);
+           res.sendFile('index.html');
        });
     });
+    res.sendFile('index.html');
+
 });
  
 app.listen(4000, function () {
@@ -58,8 +64,7 @@ app.post('/update', function(req, res) {
                 else {
                     done();
                     res.json(result);
-                    console.log(result);
-                }
+                     }
             }
         );
     });
