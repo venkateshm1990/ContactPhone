@@ -11,10 +11,19 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+app.get('/getall', function(req,res){
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        if (err) console.log(err);
+        conn.query('Select * from Salesforce.ApexPage',[2],function(err,result){
+            if(err){
+                console.log(err);
+                res.status(400).send(err);
+            }
+            res.status(200).send(result.rows);
+            res.json(results);
+        });
 
- 
-app.listen(4000, function () {
-    console.log('Server is running.. on Port 4000');
+});
 });
 
 app.post('/update', function(req, res) {
