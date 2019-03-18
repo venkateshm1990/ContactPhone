@@ -11,8 +11,8 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/getall', function(req,res){
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+app.get('/getall', function(_req,res){
+    pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
@@ -23,8 +23,8 @@ app.get('/getall', function(req,res){
             res.status(200).send(result.rows);
             console.log(fields);
             res.json(fields);
-            listofrows=res.json(fields);
-            alert('alert for server'+listofrows);
+            //listofrows=res.json(fields);
+
             }
         });
 });
