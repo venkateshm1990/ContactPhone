@@ -14,18 +14,17 @@ app.use(bodyParser.json());
 app.get('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         if (err) console.log(err);
-        conn.query('SELECT Name,Markup FROM salesforce.ApexPage',[2],function(err,result){
+        conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('error'+err);
-                res.status(400).send(err);
-            }
+                res.status(400).json({error: err.message});
+            }else{
             res.status(200).send(result.rows);
-            alert('result'+result);
-            //res.json(result);
-
+            console.log(fields);
+            res.json(result);
+            }
         });
-
 });
 });
 
