@@ -30,6 +30,7 @@
                 success: function (data) {
                     alert("Alert from html"+JSON.stringify(data));
                     JSON.stringify(data);
+                    console.debug(data);
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem!"+errorMessage);
