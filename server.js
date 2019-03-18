@@ -23,6 +23,8 @@ app.get('/getall', function(req,res){
             res.status(200).send(result.rows);
             console.log(fields);
             res.json(fields);
+            listofrows=res.json(fields);
+            alert('alert for server'+listofrows);
             }
         });
 });
