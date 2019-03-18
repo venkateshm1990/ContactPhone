@@ -28,7 +28,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    alert("Alert from html"+data);
+                    alert("Alert from html"+JSON.stringify(data));
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem!"+errorMessage);
