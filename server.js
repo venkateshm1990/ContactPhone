@@ -22,7 +22,7 @@ app.get('/getall', function(req,res){
             }else{
             res.status(200).send(result.rows);
             console.log(fields);
-            res.json(result);
+            res.json(fields);
             }
         });
 });
