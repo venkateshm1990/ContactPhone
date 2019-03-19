@@ -11,7 +11,7 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/getall', function(_req,res){
+app.get('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
@@ -30,12 +30,12 @@ app.get('/getall', function(_req,res){
 });
 });
 
-app.post('/updates', function(req, res) {
+app.put('/updates', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = REPLACE( Markup,<apex:page,<apex:page lightningStyleSheets="true") WHERE Name="Sample"',           
+            'UPDATE salesforce.ApexPage SET Markup = REPLACE( <apex:page,<apex:page lightningStyleSheets="true") WHERE Name="Sample"',           
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)'
@@ -55,7 +55,7 @@ app.post('/updates', function(req, res) {
                 else {
                     done();
                     res.json(result);
-                     }
+                }
             }
         );
     });
