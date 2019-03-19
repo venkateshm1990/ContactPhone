@@ -35,7 +35,7 @@ app.put('/updates', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = REPLACE( <apex:page,<apex:page lightningStyleSheets="true") WHERE Name="Sample"',           
+            'UPDATE salesforce.ApexPage SET Markup = REPLACE( Markup,"<apex:page","<apex:page lightningStyleSheets="true"") WHERE Name="Sample"',           
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)'
