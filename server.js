@@ -27,37 +27,25 @@ app.get('/getall', function(req,res){
 
             }
         });
-});
+    });
 });
 
 app.put('/updates', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
-        conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = REPLACE( Markup,"<apex:page","<apex:page lightningStyleSheets="true"") WHERE Name="Sample"',           
-            function(err, result) {
-                if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)'
-                  [req.body.Markup.trim(), req.body.Name.trim()],
-                  function(err, result) {
-                    done();
-                    if (err) {
-                        res.status(400).json({error: err.message});
-                    }
-                    else {
-                        // this will still cause jquery to display 'Record updated!'
-                        // eventhough it was inserted
-                        res.json(result);
-                    }
-                  });
-                }
-                else {
-                    done();
-                    res.json(result);
-                }
-            }
-        );
+        conn.query('UPDATE salesforce.ApexPage SET Markup = REPLACE( Markup,"<apex:page","<apex:page lightningStyleSheets="true"") WHERE Name="Sample"', function(err,result,fields){          
+        if(err){
+            console.log(err);
+            alert('error'+err);
+            res.status(400).json({error: err.message});
+        }else{
+        res.status(200).send(result.rows);
+        console.log(fields);
+        res.json(fields);
+        //listofrows=res.json(fields);
+        }
+        });
     });
 });
 
