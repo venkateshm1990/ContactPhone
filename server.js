@@ -35,7 +35,7 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = REPLACE(Markup,<apex:page,<apex:page lightningStylesheets="true") WHERE LOWER(Name)="Sample"',
+            'UPDATE salesforce.ApexPage SET Markup = REPLACE(Markup,apex:page,apex:page lightningStylesheets="true") WHERE LOWER(Name)="Sample"',
             [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
                 done();
