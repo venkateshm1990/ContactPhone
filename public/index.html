@@ -30,7 +30,7 @@
                     alert(data);
                     var d=JSON.stringify(data);
                     alert('Data After Stringify'+d)
-                    var select =[$data.Markup];
+                    var select =[$d];
                     alert('Alert for select'+select);
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
                     $.each(data, function(index, value){
