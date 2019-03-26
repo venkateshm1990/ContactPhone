@@ -27,7 +27,7 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    alert();
+                    alert(data);
                     var select =[$(Json.stringify(data))];
                     alert('From Select Variable####'+ select);
                     select.find('<apex:page').remove();
