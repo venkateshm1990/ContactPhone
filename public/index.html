@@ -29,7 +29,7 @@
                 success: function(data){
                     alert(data);
                     var select =[$(data)];
-                    alert('From Select Variable####'+ select);
+                    alert('From Select Variable####'+ select[0]);
                     select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
                     $.each(data, function(index, value){
