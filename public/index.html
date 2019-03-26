@@ -26,12 +26,12 @@
                 }),
                 type:'put',
                 cache:false,
-                success: function(response){
-                    var select = $(response.Markup);
+                success: function(data){
+                    var select = $(data.Markup);
                     alert('From Select Variable####'+ select);
                     select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
-                    $.each(response, function(index, value){
+                    $.each(data, function(index, value){
                         //insert the values into an array
                     });
                     callback.apply(select);
