@@ -11,7 +11,7 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/getall', function(req,res){
+app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
@@ -24,7 +24,6 @@ app.get('/getall', function(req,res){
             console.log(fields);
             res.json(fields);
             //listofrows=res.json(fields);
-
             }
         });
     });
@@ -35,7 +34,7 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = REPLACE(Markup,apex:page,apex:page lightningStylesheets="true") WHERE LOWER(Name)="Sample"',
+            'UPDATE salesforce.ApexPage SET Markup = REPLACE(Markup,"<apex:page","<apex:page lightningStylesheets="true") WHERE LOWER(Name)="Sample" ',
             [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
                 done();
@@ -78,7 +77,7 @@ app.post('/updates', function(req, res) {
                 else {
                     done();
                     res.json(result);
-                     }
+                }
             }
         );
     });

@@ -18,26 +18,28 @@
         $("#GetAll").submit(function(event) {
             event.preventDefault();
                $.ajax({
-                url: event.target.action,
-                method: event.target.method,
-                data: JSON.stringify({
+                url:event.target.action,
+                data:JSON.stringify({
                     Name: Name,
                     Markup: Markup,
                    
                 }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    alert("Alert from html"+JSON.stringify(data));
-                    JSON.stringify(data);
+                type:'put',
+                cache:false,
+                success: function(response){
+                    var select = $(response.Markup);
+                    alert(select);
+                    select.find('<apex:page').remove();
+                    $('<apex:page lightningStyleSheet="true"').appendTo(select);
+                    $.each(response, function(index, value){
+                        //insert the values into an array
+                    });
+                    callback.apply(select);
                 },
                 error: function (xhr, status) {
-                    alert("Sorry, there was a problem!"+errorMessage);
-                },
-                complete: function (xhr, status) {
-                    //$('#showresults').slideDown('slow')
-                }
-            });
+                    alert("Sorry, there was a problem in finding component!"+errorMessage);
+                }   
+            }); 
         });
     });
 
@@ -160,7 +162,7 @@
                 </div>
             </div>
         </form>
-        <form id="GetAlls" action="/updates" method="put" >
+        <form id="GetAll" action="/getall" method="put" >
             <button type="submit" class="btn btn-primary">Update All</button>
             
         </form>
