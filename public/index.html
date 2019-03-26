@@ -27,7 +27,7 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    var select = $(data.Markup);
+                    var select = $(Markup);
                     alert('From Select Variable####'+ select);
                     select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
