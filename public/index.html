@@ -29,8 +29,6 @@
                 success: function(data){
                     alert(data);
                     var select =[data.Markup];
-                    alert('From Select Variable####'+ select[0]);
-                    select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
                     $.each(data, function(index, value){
                         //insert the values into an array
@@ -43,6 +41,8 @@
             }); 
         });
     });
+                    alert('From Select Variable####'+ select[0]);
+                    select.find('<apex:page').remove()
 
    </script>
    <script>
