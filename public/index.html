@@ -27,11 +27,12 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    alert(data);
-                    var d=JSON.stringify(data);
-                    alert('Data After Stringify'+d)
-                    var select =[$d];
-                    alert('Alert for select'+select);
+                    
+                    var select =JSON.stringify(data);
+                    alert('After parsing'+JSON.parse(select));
+                    alert('From Select Variable####'+ select);
+                    select.replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    //select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
                     $.each(data, function(index, value){
                         //insert the values into an array
@@ -44,8 +45,6 @@
             }); 
         });
     });
-                    alert('From Select Variable####'+ select[0]);
-                    select.find('<apex:page').remove()
 
    </script>
    <script>
