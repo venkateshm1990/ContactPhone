@@ -14,6 +14,7 @@
         }
     </style>
    <script>
+         
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
@@ -112,7 +113,6 @@
                         success: function(data) {
                             $("#Name").val("");
                             $("#Markup").val("");
-                            
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },

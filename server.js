@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Markup FROM salesforce.ApexPage',function(err,result,fields){
+        conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('error'+err);
@@ -24,8 +24,24 @@ app.put('/getall', function(req,res){
             console.log(fields);
             res.json(fields);
             //listofrows=res.json(fields);
+
             }
         });
+        conn.query(
+            'UPDATE salesforce.ApexPage SET Markup = $1 ',
+            [res.json.fields.Markup],
+            function(err, result) {
+                
+                done();
+                if (err) {
+                    res.status(400).json({error: err.message});
+                }
+                else {
+                    
+                    res.json(result);
+                }
+            }
+        );
     });
 });
 
