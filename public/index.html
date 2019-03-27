@@ -20,13 +20,13 @@
                $.ajax({
                 url:event.target.action,
                 data:JSON.stringify({
-                    Name: Name,
+                    
                     Markup: Markup,
                 }),
                 type:'put',
                 cache:false,
                 success: function(data){
-                    var select =JSON.stringify(data.Markup);
+                    var select =JSON.stringify(data);
                     //alert('After parsing'+JSON.parse(select));
                     alert('From Select Variable####'+ select);
                     //select.Markup.replace('<apex:page','<apex:page lightningStylesheet="true"');
