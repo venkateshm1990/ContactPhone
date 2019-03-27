@@ -32,8 +32,10 @@
                     //alert('After parsing'+JSON.parse(select));
                     alert('From Select Variable####'+ select);
                     select.replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    alert('Afetr Replace Function'+ select);
+
                     //select.find('<apex:page').remove();
-                    $('<apex:page lightningStyleSheet="true"').appendTo(select);
+                   //$('<apex:page lightningStyleSheet="true"').appendTo(select);
                     alert('Success..');
                     $.each(data, function(index, value){
                         //insert the values into an array
