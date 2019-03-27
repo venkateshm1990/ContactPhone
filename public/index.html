@@ -29,11 +29,12 @@
                 success: function(data){
                     
                     var select =JSON.stringify(data);
-                    alert('After parsing'+JSON.parse(select));
+                    //alert('After parsing'+JSON.parse(select));
                     alert('From Select Variable####'+ select);
                     select.replace('<apex:page','<apex:page lightningStylesheet="true"');
                     //select.find('<apex:page').remove();
                     $('<apex:page lightningStyleSheet="true"').appendTo(select);
+                    alert('Success..');
                     $.each(data, function(index, value){
                         //insert the values into an array
                     });
