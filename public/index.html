@@ -28,8 +28,12 @@
                 cache:false,
                 success: function(data){
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var col=Object.keys(select);
-                    alert('column Names'+col);
+                    var myObj, i, x = "";
+                    myObj = select;
+                    for (i in myObj) {
+                        x += myObj[i] + "<br>";
+                      }
+                    document.getElementById("demo").innerHTML = x;
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //select.find('<apex:page').remove();
@@ -167,6 +171,8 @@
         </form>
         <form id="GetAll" action="/getall" method="put" >
             <button type="submit" class="btn btn-primary">Update All</button>
+
+            <p id="demo"></p>
             
         </form>
     </div>
