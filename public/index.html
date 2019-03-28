@@ -28,13 +28,8 @@
                 cache:false,
                 success: function(data){
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var s=JSON.parse(select);
-                    //alert('After parsing'+JSON.parse(select));
                     alert('From Select Variable####'+ select);
-                    alert('After Parsing@@@@'+s);
-                    
                     alert('Afetr Replace Function'+ select);
-
                     //select.find('<apex:page').remove();
                    //$('<apex:page lightningStyleSheet="true"').appendTo(select);
                     alert('Success..'); 
