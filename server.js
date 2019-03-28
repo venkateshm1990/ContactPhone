@@ -20,13 +20,11 @@ app.put('/getall', function(req,res){
                 alert('error'+err);
                 res.status(400).json({error: err.message});
             }else{
-            res.status(200).send(result.rows);
+           // res.status(200).send(result.rows);
             console.log(fields);
             res.json(fields);
-            
             }
         });
-       
     });
 });
 
