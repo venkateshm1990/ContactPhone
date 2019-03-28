@@ -28,6 +28,8 @@
                 cache:false,
                 success: function(data){
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    var col=Object.keys(select);
+                    alert('column Names'+col);
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //select.find('<apex:page').remove();
