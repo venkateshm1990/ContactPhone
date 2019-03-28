@@ -23,15 +23,14 @@ app.put('/getall', function(req,res){
             res.status(200).send(result.rows);
             console.log(fields);
             res.json(fields);
-            //listofrows=res.json(fields);
-
+            
             }
         });
        
     });
 });
 
-app.post('/update', function(req, res) {
+app.post('/updates', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
@@ -53,7 +52,7 @@ app.post('/update', function(req, res) {
     });
 });
 
-app.post('/updates', function(req, res) {
+app.post('/update', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);

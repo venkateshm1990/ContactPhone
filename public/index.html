@@ -27,6 +27,7 @@
                 type:'put',
                 cache:false,
                 success: function(data){
+                    // this for rendering on html
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     var myObj, i, x = "";
                     myObj = select;
