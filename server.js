@@ -27,21 +27,7 @@ app.put('/getall', function(req,res){
 
             }
         });
-        conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 ',
-            [res.json.fields.Markup],
-            function(err, result) {
-                
-                done();
-                if (err) {
-                    res.status(400).json({error: err.message});
-                }
-                else {
-                    
-                    res.json(result);
-                }
-            }
-        );
+       
     });
 });
 
