@@ -23,29 +23,11 @@
                     
                     Markup: Markup,
                 }),
-                type:'GET',
+                type:'put',
                 cache:false,
                 success: function(data){
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var str_array = select.split('\n');
-
-                    for(var i = 0; i < str_array.length; i++) {
-                       // Trim the excess whitespace.
-                       str_array[i] = str_array[i].replace(/^\n/, "").replace(/\s/, "").replace(/\n/,"").replace('/',"");
-                       // Add additional code here, such as:
-                       alert('After all filter'+str_array[i]);
-                    }
-                    $.ajax({
-                        type: 'post',
-                        url: '/save',
-                        data: select,
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (html) {
-                            alert('Data passed to server');
-                        }
-                    })                   
-                     alert('From Select Variable####'+ select);
+                    alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
                     
@@ -63,7 +45,6 @@
             }); 
         });
     });
-
    </script>
    <script>
     $(function() {
@@ -94,23 +75,18 @@
             
         });
     });
-
    </script>
     <script>
         $(function() {
             $("#ApexPageMarkerChangerForm").submit(function(event) {
                 event.preventDefault();
-
                 var errorMessage = $("#errorMessage");
                 var error = $("#error");
                 error.hide();
-
                 $("#message").hide();
-
                 var Name = $("#Name").val();
                 var Markup = $("#Markup").val();
                 
-
                 if (Name.length == 0 || Markup.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
@@ -140,7 +116,6 @@
                 }
             });
         });
-
     </script>
 </head>
 <body>
@@ -182,7 +157,7 @@
                 </div>
             </div>
         </form>
-        <form id="GetAll" action="/getall" method="GET" >
+        <form id="GetAll" action="/getall" method="put" >
             <button type="submit" class="btn btn-primary">Update All</button>
 
             <p id="demo"></p>

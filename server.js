@@ -11,7 +11,7 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/getall', function(req,res){
+app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
@@ -27,15 +27,8 @@ app.get('/getall', function(req,res){
 
             }
         });
-        
        
     });
-});
-
-app.post('/save',function(req,res){
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done){
-
-    }
 });
 
 app.post('/updates', function(req, res) {
