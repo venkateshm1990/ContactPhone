@@ -26,16 +26,7 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    // this for rendering on html
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var name=JSON.parse(select.name);
-                    alert('Name value'+name);
-                    var myObj, i, x = "";
-                    myObj = select;
-                    for (i in myObj) {
-                        x += myObj[i] ;
-                      }
-                    document.getElementById("demo").innerHTML = x;
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //select.find('<apex:page').remove();
@@ -52,7 +43,6 @@
             }); 
         });
     });
-
 
    </script>
    <script>
