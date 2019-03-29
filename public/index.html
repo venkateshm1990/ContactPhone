@@ -23,7 +23,7 @@
                     
                     Markup: Markup,
                 }),
-                type:'get',
+                type:'GET',
                 cache:false,
                 success: function(data){
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
@@ -182,7 +182,7 @@
                 </div>
             </div>
         </form>
-        <form id="GetAll" action="/getall" method="get" >
+        <form id="GetAll" action="/getall" method="GET" >
             <button type="submit" class="btn btn-primary">Update All</button>
 
             <p id="demo"></p>
