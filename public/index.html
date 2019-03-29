@@ -31,7 +31,7 @@
 
                     for(var i = 0; i < str_array.length; i++) {
                        // Trim the excess whitespace.
-                       str_array[i] = str_array[i].replace(/^\n*/, "").replace(/\s/, "");
+                       str_array[i] = str_array[i].replace(/^\n/, "").replace(/\s/, "").replace(/\nn/,"").replace('/',"");
                        // Add additional code here, such as:
                        alert('After all filter'+str_array[i]);
                     }                   
