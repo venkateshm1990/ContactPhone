@@ -26,10 +26,16 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    //data.JSON.replace('\n','');
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    //select=select.replace('/\n\nn','');
-                    alert('From Select Variable####'+ select);
+                    var str_array = select.split('\n');
+
+                    for(var i = 0; i < str_array.length; i++) {
+                       // Trim the excess whitespace.
+                       str_array[i] = str_array[i].replace(/^\n*/, "").replace(/\s/, "");
+                       // Add additional code here, such as:
+                       alert('After all filter'+str_array[i]);
+                    }                   
+                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
                     
