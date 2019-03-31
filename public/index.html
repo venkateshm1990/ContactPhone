@@ -12,8 +12,43 @@
             padding-top: 60px;
         }
     </style>
+
+
    <script>
-         
+    $(function() {
+        $("#GetAll").submit(function(event) {
+            event.preventDefault();
+               $.ajax({
+                url:event.target.action,
+                data:JSON.stringify({
+                    
+                    Markup: Markup,
+                }),
+                type:'put',
+                cache:false,
+                success: function(data){
+                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    alert('From Select Variable####'+ select);
+                    alert('Afetr Replace Function'+ select);
+                    //alert('After parsing####'+ d);
+                    
+                    //select.find('<apex:page').remove();
+                   //$('<apex:page lightningStyleSheet="true"').appendTo(select);
+                    alert('Success..'); 
+                    $.each(data, function(index, value){
+                        //insert the values into an array
+                    });
+                    callback.apply(select);
+                },
+                error: function (xhr, status) {
+                    alert("Sorry, there was a problem in finding component!"+errorMessage);
+                }   
+            }); 
+        });
+    });
+   </script>
+
+<script>         
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
