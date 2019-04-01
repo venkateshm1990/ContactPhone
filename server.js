@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.put('/getall', function(req,res){
-    pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         if (err) console.log(err);
         conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
