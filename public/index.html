@@ -15,9 +15,7 @@
 
 
    <script>
-        function replacer(key, value) {
-            return value.replace(/[\^\w\s\n]/gi, '');
-          }
+        
 
     $(function() {
         $("#GetAll").submit(function(event) {
@@ -32,7 +30,7 @@
                 cache:false,
                
                 success: function(data){
-                    var select =JSON.stringify(data, replacer).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     var objjson=[JSON.parse(select)];
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
