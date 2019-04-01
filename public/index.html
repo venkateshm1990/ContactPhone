@@ -13,7 +13,6 @@
         }
     </style>
 
-
    <script>
         function replacer(key, value) {
             return value.replace(/[^\w\s\n]/gi, '');
@@ -23,10 +22,10 @@
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
-              //  data:JSON.stringify({
+               data:JSON.stringify({
                     
-               //     Markup: Markup,
-//}),
+                   Markup: Markup,
+               }), 
                 type:'put',
                 cache:false,
                
@@ -43,10 +42,8 @@
                         var _markup=Markup;
                        console.log('Id'+_id);
                     }
-                    alert('Select obj#####'+obj);
-                    //select.find('<apex:page').remove();
-                   //$('<apex:page lightningStyleSheet="true"').appendTo(select);
-                    alert('Success..'); 
+                    
+                    alert('Success...'); 
                     $.each(data, function(index, value){
                         //insert the values into an array
                     });

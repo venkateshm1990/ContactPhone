@@ -4,20 +4,20 @@ var pg = require('pg');
 
 var app = express();
 var listofrows=[];
-
+  
 
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-
+ 
 app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
-                alert('error'+err);
+                alert('errors'+err);
                 res.status(400).json({error: err.message});
             }else{
             res.status(200).send(result.rows);
