@@ -17,7 +17,7 @@ app.put('/getall', function(req,res){
         conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
-                alert('error'+err);
+                alert('errors'+err);
                 res.status(400).json({error: err.message});
             }else{
             res.status(200).send(result.rows);
