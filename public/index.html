@@ -16,8 +16,9 @@
 
    <script>
         function replacer(key, value) {
-            return value.replace(/[^\w\s\n]/gi, '');
+            return value.replace(/[\^\w\s\n]/gi, '');
           }
+
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
@@ -44,6 +45,7 @@
                         var _name=obj.Name;
                         var _markup=Markup;
                         alert("no of ids vvvvvv" +_id);
+                        console.log(obj);
                     }
                     alert()
                     //select.find('<apex:page').remove();
