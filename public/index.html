@@ -13,37 +13,29 @@
         }
     </style>
 
-   <script>
-        function replacer(key, value) {
-            return value.replace(/[^\w\s\n]/gi, '');
-          }
+   
+
+<script>         
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
-               data:JSON.stringify({
+                data:JSON.stringify({
                     
-                   Markup: Markup,
-               }), 
+                    Markup: Markup,
+                }),
                 type:'put',
                 cache:false,
-               
                 success: function(data){
-                    var select =JSON.stringify(data, replacer).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
-                    var datas=[select];
-                    alert('In data variablr   &&&&'+datas);
-                    var rest="";
-                    for(var i=0;i<=datas.length;i++){
-                        var obj=datas[i];
-                        var _id=obj.id;
-                        var _name=obj.Name;
-                        var _markup=Markup;
-                       console.log('Id'+_id);
-                    }
+                    //alert('After parsing####'+ d);
                     
-                    alert('Success...'); 
+                    //select.find('<apex:page').remove();
+                   //$('<apex:page lightningStyleSheet="true"').appendTo(select);
+                    alert('Success..'); 
                     $.each(data, function(index, value){
                         //insert the values into an array
                     });
@@ -56,8 +48,6 @@
         });
     });
    </script>
-
-
    <script>
     $(function() {
         $("#GetAlls").submit(function(event) {
