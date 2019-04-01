@@ -46,13 +46,12 @@
                         for (var i = 0; i <= split1.length - 1; i++) {
         
                             var InnerSplit = split1[i].split(','); //Split by , for Billing details 
-                            var TempID = InnerSplit[3].split(':'); //split for billing name ' 0-'BillingMonthName': 1 -'November''
-                            var id = TempID; // 'November' MonthName
+                            var TempID = InnerSplit[1].split(':'); //split for billing name ' 0-'BillingMonthName': 1 -'November''
+                            var id = TempID[1]; // 'November' MonthName
                             var TempMarkup = InnerSplit[1].split(':');
                             var Markup = TempMarkup[1]; //Month Year
-                            
-        
-                            var series = new Array(dataPoints.push({ x: id + '-' ,y: Markup })); 
+                            var series = new Array(dataPoints.push({ x: TempID ,y: TempMarkup })); 
+                            console.log(series);
                     alert('Array of series  '+series);
                     
                     //select.find('<apex:page').remove();
