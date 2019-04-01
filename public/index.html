@@ -33,7 +33,7 @@
                
                 success: function(data){
                     var select =JSON.stringify(data, replacer).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var objjson=JSON.parse(select);
+                    var objjson=[JSON.parse(select)];
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
