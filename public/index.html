@@ -27,7 +27,7 @@
                 type:'put',
                 cache:false,
                 success: function(data){
-                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    var select =JSON.stringify(data).replace('\n',"").replace('<apex:page','<apex:page lightningStylesheet="true"');
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
