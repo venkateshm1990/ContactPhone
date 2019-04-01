@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var pg = require('pg');
-var getrecs=require('GetAllRecords.js');
 
 var app = express();
 var listofrows=[];
@@ -13,7 +12,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.put('/getall', function(req,res){
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){

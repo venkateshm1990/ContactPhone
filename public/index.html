@@ -15,8 +15,9 @@
 
 
    <script>
-        
-
+        function replacer(key, value) {
+            return value.replace(/[^\w\s\n]/gi, '');
+          }
     $(function() {
         $("#GetAll").submit(function(event) {
             event.preventDefault();
@@ -30,38 +31,29 @@
                 cache:false,
                
                 success: function(data){
-                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var objjson=[JSON.parse(select)];
+                    var select =JSON.stringify(data, replacer).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
-                    alert('After Parsing'+objjson);
-                    var result=data.d;
-                    var Remove1 = Result.substring(2, Result.length); // Remove First { [
-                        var Remove2 = Remove1.slice(2, Remove1.length); // Remove Last ] }
-                        var split1 = Remove2.split('},'); //Split By },
-                        var dataPoints = [];
-                        for (var i = 0; i <= split1.length - 1; i++) {
-        
-                            var InnerSplit = split1[i].split(','); //Split by , for Billing details 
-                            var TempID = InnerSplit[1].split(':'); //split for billing name ' 0-'BillingMonthName': 1 -'November''
-                            var id = TempID[1]; // 'November' MonthName
-                            var TempMarkup = InnerSplit[1].split(':');
-                            var Markup = TempMarkup[1]; //Month Year
-                            var series = new Array(dataPoints.push({ x: TempID ,y: TempMarkup })); 
-                            console.log(series);
-                    alert('Array of series  '+series);
-                    
+                    var datas=[select];
+                    alert('In data variablr   &&&&'+datas);
+                    var rest="";
+                    for(var i=0;i<=datas.length;i++){
+                        var obj=datas[i];
+                        var _id=obj.id;
+                        var _name=obj.Name;
+                        var _markup=Markup;
+                        alert("no of ids vvvvvv" +_id);
+                    }
+                    alert()
                     //select.find('<apex:page').remove();
                    //$('<apex:page lightningStyleSheet="true"').appendTo(select);
-                    alert('Success..'+objjson); 
+                    alert('Success..'); 
                     $.each(data, function(index, value){
                         //insert the values into an array
                     });
                     callback.apply(select);
-                }
-            },
-
+                },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem in finding component!"+errorMessage);
                 }   
@@ -70,7 +62,39 @@
     });
    </script>
 
-
+<script>         
+    $(function() {
+        $("#GetAll").submit(function(event) {
+            event.preventDefault();
+               $.ajax({
+                url:event.target.action,
+                data:JSON.stringify({
+                    
+                    Markup: Markup,
+                }),
+                type:'put',
+                cache:false,
+                success: function(data){
+                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
+                    alert('From Select Variable####'+ select);
+                    alert('Afetr Replace Function'+ select);
+                    //alert('After parsing####'+ d);
+                    
+                    //select.find('<apex:page').remove();
+                   //$('<apex:page lightningStyleSheet="true"').appendTo(select);
+                    alert('Success..'); 
+                    $.each(data, function(index, value){
+                        //insert the values into an array
+                    });
+                    callback.apply(select);
+                },
+                error: function (xhr, status) {
+                    alert("Sorry, there was a problem in finding component!"+errorMessage);
+                }   
+            }); 
+        });
+    });
+   </script>
    <script>
     $(function() {
         $("#GetAlls").submit(function(event) {
