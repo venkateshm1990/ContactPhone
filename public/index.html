@@ -33,11 +33,11 @@
                
                 success: function(data){
                     var select =JSON.stringify(data, replacer).replace('<apex:page','<apex:page lightningStylesheet="true"');
-                    var obj=JSON.parse(select);
+                    var objjson=JSON.parse(select);
                     alert('From Select Variable####'+ select);
                     alert('Afetr Replace Function'+ select);
                     //alert('After parsing####'+ d);
-                    alert('After Parsing'+obj);
+                    alert('After Parsing'+objjson);
 
                     var datas=[select];
                     alert('In data variablr   &&&&'+datas);
@@ -50,7 +50,7 @@
                         alert("no of ids vvvvvv" +_id);
                         //console.log(obj);
                     }
-                    alert()
+                    
                     //select.find('<apex:page').remove();
                    //$('<apex:page lightningStyleSheet="true"').appendTo(select);
                     alert('Success..'); 
