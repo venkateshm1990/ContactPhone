@@ -30,8 +30,8 @@
                 cache:false,
                 success: function(data){
                     alert(data);
-                    alert('From Select Variable####'+ select);
-                    var s = select.replace(/\\n/g, "\\n")  
+                   // alert('From Select Variable####'+ select);
+                    var s = data.replace(/\\n/g, "\\n")  
                         .replace(/\\'/g, "\\'")
                         .replace(/\\"/g, '\\"')
                         .replace(/\\&/g, "\\&")
