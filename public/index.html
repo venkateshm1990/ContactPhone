@@ -50,12 +50,12 @@
 
                     $.ajax({
                         url: updateAction,
+                        type: updateMethod,
                         data: JSON.stringify({
-                            Id: response[i].id,
+                            id: response[i].id,
                             Markup: response[i].markup,
                            
                         }),
-                        type: 'post',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (data) {
