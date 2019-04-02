@@ -59,8 +59,8 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE Id = $2',
-            [req.body.Markup.trim(), req.body.Name.trim()],
+            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE id = $2',
+            [req.body.Markup.trim(), req.body.id.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO salesforce.ApexPage (Markup, Id) VALUES ($1, $2)',
