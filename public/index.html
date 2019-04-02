@@ -47,10 +47,9 @@
                   for(var i = 0; i < response.length; i++){
                     console.log(response[i]);
 
-
                     $.ajax({
                         url: updateAction,
-                        type: updateMethod,
+                        method: updateMethod,
                         data: JSON.stringify({
                             id: response[i].id,
                             Markup: response[i].markup,
@@ -58,22 +57,14 @@
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        success: function (data) {
-                            //alert("Alert from html"+JSON.stringify(data));
-                            alert('Record Updated Successfully');
-                            //JSON.stringify(data);
-                        },
-                        error: function (xhr, status) {
-                            alert("Sorry, there was a problem!"+errorMessage);
-                        },
-                        complete: function (xhr, status) {
-                            //$('#showresults').slideDown('slow')
+                        success: function(data) {
+                            $("#messageMessage").text("Record updated!");
+                            },
+                        error: function(err) {
+                            errorMessage.text(err.responseJSON.error);
+                            error.show();
                         }
-
-                    });    
-
-
-
+                    })
                     console.log('break'); // Object with id and time
                 }
                     alert('Parce Success..');     
