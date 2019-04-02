@@ -30,8 +30,9 @@
                 cache:false,
                 success: function(data){
                     alert(data);
-                   // alert('From Select Variable####'+ select);
-                    var s = data.replace(/\\n/g, "\\n")  
+                    var select =JSON.stringify(data);
+                    alert('From Select Variable####'+ select);
+                    var s = select.replace(/\\n/g, "\\n")  
                         .replace(/\\'/g, "\\'")
                         .replace(/\\"/g, '\\"')
                         .replace(/\\&/g, "\\&")
@@ -48,7 +49,7 @@
                         console.log(response[i]);
                         var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheet="true"');
                         $("#Name").val(response[i].name);
-                        $("#Markup").val(Markup);
+                        $("#Markup").val(response[i].markup);
 
                         $("#ApexPageMarkerChangerForm").submit();            
                         /*$.ajax({
