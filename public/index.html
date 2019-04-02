@@ -20,6 +20,7 @@
         $("#GetAll").submit(function(event) {
             var updateAction = $("#ApexPageMarkerChangerForm").attr('action');
             var updateMethod = $("#ApexPageMarkerChangerForm").attr('method');
+            alert(method);
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
