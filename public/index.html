@@ -29,7 +29,7 @@
                 cache:false,
                 success: function(data){
                     alert(data);
-                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet=\"sdfdtrue\"');
+                    var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet=\/"sdfdtrue\/"');
                     alert('From Select Variable####'+ select);
                     /*var s = select.replace(/\\n/g, "\\n")  
                         .replace(/\\'/g, "\\'")
