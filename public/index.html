@@ -18,11 +18,13 @@
 <script>         
     $(function() {
         $("#GetAll").submit(function(event) {
+            var updateAction = $("#ApexPageMarkerChangerForm").attr('action');
+            var updateMethod = $("#ApexPageMarkerChangerForm").attr('method');
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
-                data:JSON.stringify({
-                    
+                method: event.target.method,
+                data:JSON.stringify({  
                     Markup: Markup,
                 }),
                 type:'put',
@@ -48,8 +50,8 @@
 
 
                     $.ajax({
-                        url: event.target.action,
-                        method: event.target.method,
+                        url: updateAction,
+                        method: updateMethod,
                         data: JSON.stringify({
                             Id: response[i].id,
                             Markup: response[i].markup,
@@ -59,8 +61,8 @@
                         dataType: "json",
                         success: function (data) {
                             //alert("Alert from html"+JSON.stringify(data));
-                            //alert('Record Updated Successfully');
-                            JSON.stringify(data);
+                            alert('Record Updated Successfully');
+                            //JSON.stringify(data);
                         },
                         error: function (xhr, status) {
                             alert("Sorry, there was a problem!"+errorMessage);
@@ -68,8 +70,8 @@
                         complete: function (xhr, status) {
                             //$('#showresults').slideDown('slow')
                         }
-                    });
 
+                    });    
 
 
 
@@ -196,12 +198,15 @@
                 </div>
             </div>
         </form>
-        <form id="GetAll" action="/update" method="put" >
+        <form id="GetAll" action="/getall" method="put" >
             <button type="submit" class="btn btn-primary">Update All</button>
 
             <p id="demo"></p>
             
         </form>
+
+        <form id="Update all records" action="/update" method="post">
+        </form> 
     </div>
     <div>
     </div>
