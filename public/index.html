@@ -18,6 +18,8 @@
 <script>         
     $(function() {
         $("#GetAll").submit(function(event) {
+            var updateAction = $("#ApexPageMarkerChangerForm").attr('action');
+            var updateMethod = $("#ApexPageMarkerChangerForm").attr('method');
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
@@ -31,13 +33,42 @@
                     alert(data);
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     alert('From Select Variable####'+ select);
-                    alert('Afetr Replace Function'+ select);
-                  var ob=JSON.parse(select);
-                    alert('Parce Success..'); 
-                    $.each(data, function(index, value){
-                        
-                    });
-                    callback.apply(select);
+                    var s = select.replace(/\\n/g, "\\n")  
+                        .replace(/\\'/g, "\\'")
+                        .replace(/\\"/g, '\\"')
+                        .replace(/\\&/g, "\\&")
+                        .replace(/\\r/g, "\\r")
+                        .replace(/\\t/g, "\\t")
+                        .replace(/\\b/g, "\\b")
+                        .replace(/\\f/g, "\\f");
+                    // remove non-printable and other non-valid JSON chars
+                    s = s.replace(/[\u0000-\u0019]+/g,"");
+                    //console.log('Afetr Replace Function'+ select);
+                    var response=JSON.parse(s);
+                    for(var i = 0; i < response.length; i++){
+                        //console.log(response[i]);
+                        console.log(response[i]);
+
+                        $.ajax({
+                            url: updateAction,
+                            method: updateMethod,
+                            data: JSON.stringify({
+                                Id: response[i].id,
+                                Markup: response[i].markup,
+                            
+                            }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function(data) {
+                                alert("Record updated!");
+                                },
+                            error: function(err) {
+                                errorMessage.text(err.responseJSON.error);
+                                error.show();
+                            }
+                        })
+                    console.log('break'); // Object with id and time
+                    }    
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem in finding component!"+errorMessage);
