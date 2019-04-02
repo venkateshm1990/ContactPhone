@@ -47,7 +47,7 @@
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
-                       /* $.ajax({
+                        $.ajax({
                             url: updateAction,
                             data: JSON.stringify({
                                 Id: response[i].id,
@@ -55,15 +55,13 @@
                                
                             }),
                             type:'post',
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
                             success: function(data) {
                                 alert("Record updated!");
                             },
                             error: function(err) {
                                 alert(err.responseJSON);
                             }
-                        })*/
+                        })
                     console.log('break'); // Object with id and time
                     }    
                 },
