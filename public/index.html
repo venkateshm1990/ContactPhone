@@ -30,7 +30,6 @@
                 cache:false,
                 success: function(data){
                     alert(data);
-                    var select =JSON.stringify(data).replace('<apex:page',"<apex:page lightningStylesheet='true'");
                     alert('From Select Variable####'+ select);
                     var s = select.replace(/\\n/g, "\\n")  
                         .replace(/\\'/g, "\\'")
@@ -47,8 +46,10 @@
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
-                        $("#Id").val(response[i].id);
-                        $("#Markup").val(response[i].markup);
+                        var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheet="true"');
+                        $("#Name").val(response[i].name);
+                        $("#Markup").val(Markup);
+
                         $("#ApexPageMarkerChangerForm").submit();            
                         /*$.ajax({
                             url: updateAction,
@@ -113,7 +114,7 @@
                 var error = $("#error");
                 error.hide();
                 $("#message").hide();
-                var Id = $("#Id").val();
+                var Name = $("#Name").val();
                 var Markup = $("#Markup").val();
                 
                 if (Id.length == 0 || Markup.length == 0) {
@@ -125,7 +126,7 @@
                         url: event.target.action,
                         method: event.target.method,
                         data: JSON.stringify({
-                            Id: Id,
+                            Name: Name,
                             Markup: Markup,
                            
                         }),
@@ -165,7 +166,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="Id" placeholder="For verification" required>
+                        <input type="text" class="form-control" id="Name" placeholder="For verification" required>
                     </div>
                     <div class="form-group">
                         <label for="Markup">Markup</label>

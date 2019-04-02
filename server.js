@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT id,Markup FROM salesforce.ApexPage',function(err,result,fields){
+        conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('errors'+err);
@@ -58,12 +58,12 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Id) = LOWER($2)',
-            [req.body.Markup.trim(), req.body.Id.trim()],
+            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
+            [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)',
-                  [req.body.Markup.trim(), req.body.Id.trim()],
+                  /*conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)',
+                  [req.body.Markup.trim(), req.body.Name.trim()],
                   function(err, result) {
                     done();
                     if (err) {
@@ -74,7 +74,7 @@ app.post('/update', function(req, res) {
                         // eventhough it was inserted
                         res.json(result);
                     }
-                  });
+                  });*/
                 }
                 else {
                     done();
