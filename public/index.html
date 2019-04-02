@@ -48,7 +48,7 @@
                         //console.log(response[i]);
                         console.log(response[i]);
                         var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
-                        var Markup = response[i].markup.replace('lightningStylesheet="true" ','');
+                        Markup = Markup.replace('lightningStylesheet="true" ','');
                         $("#Name").val(response[i].name);
                         $("#Markup").val(Markup);
                         //console.log(Markup);    
