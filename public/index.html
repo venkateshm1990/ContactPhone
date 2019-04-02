@@ -62,8 +62,7 @@
                             $("#messageMessage").text("Record updated!");
                             },
                         error: function(err) {
-                            errorMessage.text(err.responseJSON.error);
-                            error.show();
+                            alert(err.responseJSON.error);
                         }
                     })
                     console.log('break'); // Object with id and time
@@ -111,7 +110,6 @@
     <script>
         $(function() {
             $("#ApexPageMarkerChangerForm").submit(function(event) {
-                alert(event.target.action);
                 event.preventDefault();
                 var errorMessage = $("#errorMessage");
                 var error = $("#error");
