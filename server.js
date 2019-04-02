@@ -63,8 +63,8 @@ app.post('/update', function(req, res) {
             [req.body.Markup.trim(), req.body.id.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Id) VALUES ($1, $2)',
-                  [req.body.Markup.trim(), req.body.Name.trim()],
+                  conn.query('INSERT INTO salesforce.ApexPage (Markup, id) VALUES ($1, $2)',
+                  [req.body.Markup.trim(), req.body.id.trim()],
                   function(err, result) {
                     done();
                     if (err) {
