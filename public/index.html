@@ -49,8 +49,7 @@
                     console.log(response[i].id);
 
                     $.ajax({
-                        url: updateAction,
-                        method: updateMethod,
+                        url: 'https://fetchandupdate.herokuapp.com/update',
                         data: JSON.stringify({
                             id: response[i].id,
                             Markup: response[i].markup,
@@ -58,11 +57,12 @@
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
+                        type: 'post',
                         success: function(data) {
                             $("#messageMessage").text("Record updated!");
                             },
                         error: function(err) {
-                            alert(err.responseJSON.error);
+                            alert(err.responseJSON);
                         }
                     })
                     console.log('break'); // Object with id and time
