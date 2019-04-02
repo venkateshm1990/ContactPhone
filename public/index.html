@@ -19,8 +19,6 @@
     $(function() {
         $("#GetAll").submit(function(event) {
             var updateAction = $("#ApexPageMarkerChangerForm").attr('action');
-            var updateMethod = $("#ApexPageMarkerChangerForm").attr('method');
-            alert(method);
             event.preventDefault();
                $.ajax({
                 url:event.target.action,
@@ -49,15 +47,14 @@
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
-
-                        $.ajax({
+                       /* $.ajax({
                             url: updateAction,
-                            method: updateMethod,
                             data: JSON.stringify({
                                 Id: response[i].id,
                                 Markup: response[i].markup,
                                
                             }),
+                            type:'post',
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function(data) {
@@ -66,7 +63,7 @@
                             error: function(err) {
                                 alert(err.responseJSON);
                             }
-                        })
+                        })*/
                     console.log('break'); // Object with id and time
                     }    
                 },
