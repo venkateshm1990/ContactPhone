@@ -31,10 +31,9 @@
                     alert(data);
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     alert('From Select Variable####'+ select);
-                    alert('Afetr Replace Function'+ select);
+                    console.log('Afetr Replace Function'+ select);
                   var ob=JSON.parse(select);
-                  alert('Parseing'+ob);
-
+                
                     alert('Parce Success..'); 
                     $.each(data, function(index, value){
                         
