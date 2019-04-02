@@ -47,7 +47,10 @@
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
-                        $.ajax({
+                        $("#Id").val(response[i].id);
+                        $("#Markup").val(response[i].markup);
+                        $("#ApexPageMarkerChangerForm").submit();            
+                        /*$.ajax({
                             url: updateAction,
                             data: JSON.stringify({
                                 Id: response[i].id,
@@ -61,7 +64,7 @@
                             error: function(err) {
                                 alert(err.responseJSON);
                             }
-                        })
+                        })*/
                     console.log('break'); // Object with id and time
                     }    
                 },
