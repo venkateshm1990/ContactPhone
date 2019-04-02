@@ -50,8 +50,8 @@
                         var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheet="true"');
                         $("#Name").val(response[i].name);
                         $("#Markup").val(response[i].markup);
-
-                        $("#ApexPageMarkerChangerForm").submit();            
+                        console.log(Markup);    
+                        //$("#ApexPageMarkerChangerForm").submit();            
                         /*$.ajax({
                             url: updateAction,
                             data: JSON.stringify({
