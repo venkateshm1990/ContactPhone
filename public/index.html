@@ -32,13 +32,12 @@
                     var select =JSON.stringify(data).replace('<apex:page','<apex:page lightningStylesheet="true"');
                     alert('From Select Variable####'+ select);
                     console.log('Afetr Replace Function'+ select);
-                  var ob=JSON.parse(select);
-                
-                    alert('Parce Success..'); 
-                    $.each(data, function(index, value){
-                        
-                    });
-                    callback.apply(select);
+                  var response=JSON.parse(select);
+                  for(var i = 0; i < response.length; i++){
+                    console.log(response[i]); // Object with id and time
+                }
+                    alert('Parce Success..');     
+                    //callback.apply(select);
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem in finding component!"+errorMessage);
