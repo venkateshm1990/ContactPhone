@@ -54,15 +54,16 @@ app.post('/updates', function(req, res) {
 });
 
 app.post('/update', function(req, res) {
+    console.log('inside server');
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
+            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE Id = $2',
             [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Name) VALUES ($1, $2)',
+                  conn.query('INSERT INTO salesforce.ApexPage (Markup, Id) VALUES ($1, $2)',
                   [req.body.Markup.trim(), req.body.Name.trim()],
                   function(err, result) {
                     done();
