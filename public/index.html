@@ -47,7 +47,7 @@
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
-                        var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheet="true"');
+                        var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
                         $("#Name").val(response[i].name);
                         $("#Markup").val(Markup);
                         //console.log(Markup);    
