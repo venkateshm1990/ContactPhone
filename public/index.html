@@ -45,7 +45,8 @@
                     //console.log('Afetr Replace Function'+ select);
                   var response=JSON.parse(s);
                   for(var i = 0; i < response.length; i++){
-                    console.log(response[i]);
+                    //console.log(response[i]);
+                    console.log(response[i].id);
 
                     $.ajax({
                         url: updateAction,
