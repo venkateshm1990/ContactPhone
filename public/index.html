@@ -31,7 +31,7 @@
                     alert(data);
                     var select =JSON.stringify(data).replace('<apex:page',"<apex:page lightningStylesheet='true'");
                     alert('From Select Variable####'+ select);
-                    /*var s = select.replace(/\\n/g, "\\n")  
+                    var s = select.replace(/\\n/g, "\\n")  
                         .replace(/\\'/g, "\\'")
                         .replace(/\\"/g, '\\"')
                         .replace(/\\&/g, "\\&")
@@ -41,8 +41,8 @@
                         .replace(/\\f/g, "\\f");
                 // remove non-printable and other non-valid JSON chars
                 s = s.replace(/[\u0000-\u0019]+/g,"");
-                    //console.log('Afetr Replace Function'+ select);*/
-                  var response=JSON.parse(select);
+                    //console.log('Afetr Replace Function'+ select);
+                  var response=JSON.parse(s);
                   for(var i = 0; i < response.length; i++){
                     console.log(response[i]);
                     console.log('break'); // Object with id and time
