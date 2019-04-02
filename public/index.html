@@ -55,16 +55,15 @@
                             data: JSON.stringify({
                                 Id: response[i].id,
                                 Markup: response[i].markup,
-                            
+                               
                             }),
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function(data) {
                                 alert("Record updated!");
-                                },
+                            },
                             error: function(err) {
-                                errorMessage.text(err.responseJSON.error);
-                                error.show();
+                                alert(err.responseJSON);
                             }
                         })
                     console.log('break'); // Object with id and time
