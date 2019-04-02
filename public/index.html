@@ -111,6 +111,7 @@
     <script>
         $(function() {
             $("#ApexPageMarkerChangerForm").submit(function(event) {
+                alert(event.target.action);
                 event.preventDefault();
                 var errorMessage = $("#errorMessage");
                 var error = $("#error");
