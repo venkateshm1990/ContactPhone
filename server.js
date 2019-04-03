@@ -35,7 +35,6 @@ app.post('/update', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
-        console.log('Request Values*****  '+req.body.Markup.trim())
         conn.query(
             'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
             [req.body.Markup.trim(), req.body.Name.trim()],
