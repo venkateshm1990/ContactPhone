@@ -37,7 +37,7 @@ app.post('/update', function(req, res) {
         if (err) console.log(err);
         conn.query(
             'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
-            [req.body.Markup, req.body.Name.trim()],
+            [req.body.Markup.trim(), req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   
