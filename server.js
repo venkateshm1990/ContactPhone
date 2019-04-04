@@ -48,6 +48,7 @@ app.post('/update', function(req, res) {
                 }
             }
         );
+        consloe.log('test '+req.body.Markup.trim());
     });
 });
 
