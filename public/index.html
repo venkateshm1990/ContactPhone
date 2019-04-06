@@ -14,9 +14,7 @@
     </style>
 <script>         
     $(function() {
-        function myFunction() {
-            document.getElementById("btSubmit").disabled = true;
-          }
+        
         $("#GetAll").submit(function(event) {
             event.preventDefault();
                $.ajax({
@@ -47,7 +45,6 @@
                         console.log(response[i]);
 
                         if(response[i].markup.indexOf('lightningStylesheets="true"') != -1){
-                            myFunction();
                         }else{
                             var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
