@@ -45,11 +45,11 @@
                         console.log(response[i]);
 
                         if(response[i].markup.indexOf('lightningStylesheets="true"') != -1){
-                            bt.disabled = false;
+                            bt.disabled = true;
                         }else{
+                            bt.disabled = false;
                             var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
-                            bt.disabled = true;
                             $("#Name").val(response[i].name);
                             $("textarea#Markup").val(Markup);
                             //console.log(Markup);    
