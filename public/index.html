@@ -39,13 +39,11 @@
                     s = s.replace(/[\u0000-\u0019]+/g,"");
                     //console.log('Afetr Replace Function'+ select);*/
                     var response=JSON.parse(select);
-                    
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
 
                         if(response[i].markup.indexOf('lightningStylesheets="true"') != -1){
-                            document.getElementById('btSubmit').disabled;
                         }else{
                             var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
