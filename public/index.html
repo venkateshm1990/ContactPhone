@@ -39,15 +39,17 @@
                     s = s.replace(/[\u0000-\u0019]+/g,"");
                     //console.log('Afetr Replace Function'+ select);*/
                     var response=JSON.parse(select);
+                    var bt = document.getElementById('btSubmit');
                     for(var i = 0; i < response.length; i++){
                         //console.log(response[i]);
                         console.log(response[i]);
 
                         if(response[i].markup.indexOf('lightningStylesheets="true"') != -1){
-                            
+                            bt.disabled = false;
                         }else{
                             var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
+                            bt.disabled = true;
                             $("#Name").val(response[i].name);
                             $("textarea#Markup").val(Markup);
                             //console.log(Markup);    
@@ -132,7 +134,7 @@
             </div>
         </form>
         <form id="GetAll" action="/getall" method="put" >
-            <button type="submit" class="btn btn-primary">Update All</button>
+            <button type="submit" class="btn btn-primary" id="btSubmit" disabled>Update All</button>
             <p id="demo"></p>
         </form>
     </div>
