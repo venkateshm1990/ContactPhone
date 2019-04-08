@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.put('/checkrecords', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Name FROM salesforce.ApexPage WHERE Markup NOT LIKE "%lightningStylesheets=\"true"\%"',function(err,result,fields){
+        conn.query('SELECT Name FROM salesforce.ApexPage WHERE Markup NOT LIKE "%lightningStylesheets="true"%"',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('errors'+err);
