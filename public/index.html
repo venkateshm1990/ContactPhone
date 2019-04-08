@@ -15,6 +15,27 @@
 <script>         
     $(function() {
         
+        /** check the number of records **/
+        $.ajax({
+            url:'checkrecords',
+            data:JSON.stringify({
+                Markup: Markup,
+            }),
+            type:'put',
+            cache:false,
+            success: function(data){
+                console.log('success'+Object.keys(data).length);
+                //var select =JSON.stringify(data);
+                //var response=JSON.parse(select);    
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem in finding component!"+errorMessage);
+            }   
+        });
+
+    
+
+
         $("#GetAll").submit(function(event) {
             event.preventDefault();
                $.ajax({
@@ -135,6 +156,7 @@
             <button type="submit" class="btn btn-primary" id="btSubmit" >Update All</button>
             <p id="demo"></p>
         </form>
+        <form id="CheckRecords" action="/checkrecords" method="put" style="display:none;"></form>
     </div>
     <div>
     </div>
