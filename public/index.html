@@ -26,7 +26,7 @@
             success: function(data){
                 console.log('success'+Object.keys(data).length);
                 var records = parseInt(Object.keys(data).length);
-                if(records > 0){
+                if(records == 0){
                     $('#btSubmit').attr("disabled", true);
                 }
 
