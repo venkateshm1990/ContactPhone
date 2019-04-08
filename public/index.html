@@ -28,12 +28,18 @@
                 var records = parseInt(Object.keys(data).length);
                 if(records == 0){
                     $('#btSubmit').attr("disabled", true);
-                }   
+                }
+
+                //var select =JSON.stringify(data);
+                //var response=JSON.parse(select);    
             },
             error: function (xhr, status) {
                 alert("Sorry, there was a problem in finding component!"+errorMessage);
             }   
         });
+
+    
+
 
         $("#GetAll").submit(function(event) {
             event.preventDefault();
