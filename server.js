@@ -35,7 +35,7 @@ app.put('/checkrecords', function(req,res){
 app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
+        conn.query('SELECT Name,Markup,IsAvailableInTouch FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('errors'+err);
@@ -58,7 +58,7 @@ app.post('/update', function(req, res) {
         if (err) console.log(err);
         conn.query(
             'UPDATE salesforce.ApexPage SET Markup = $1,IsAvailableInTouch = $2 WHERE LOWER(Name) = LOWER($3)',
-            [req.body.Markup.trim(),true,req.body.Name.trim()],
+            [req.body.Markup.trim(),'true',req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   
