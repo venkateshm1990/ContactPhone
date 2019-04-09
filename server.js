@@ -57,8 +57,8 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
-            [req.body.Markup.trim(), req.body.Name.trim()],
+            'UPDATE salesforce.ApexPage SET Markup = $1,IsAvailableInTouch=$3 WHERE LOWER(Name) = LOWER($2)',
+            [req.body.Markup.trim(), req.body.Name.trim(),true],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   
