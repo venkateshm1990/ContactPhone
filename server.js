@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.put('/checkrecords', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT * FROM salesforce.ApexPage WHERE Markup LIKE $1',
+        conn.query('SELECT Name,Markup FROM salesforce.ApexPage WHERE Markup NOT LIKE $1',
         ['%lightningStylesheets="true"%'],
         function(err,result,fields){
             if(err){
@@ -57,8 +57,8 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.ApexPage SET Markup = $1 WHERE LOWER(Name) = LOWER($2)',
-            [req.body.Markup.trim(),req.body.Name.trim()],
+            'UPDATE salesforce.ApexPage SET Markup = $1,IsAvailableInTouch =$2 WHERE LOWER(Name) = LOWER($3)',
+            [req.body.Markup.trim(),'true',req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   
