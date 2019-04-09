@@ -73,10 +73,12 @@
                         if(response[i].markup.indexOf('lightningStylesheets="true"') != -1){
                         }else{
                             var Markup = response[i].markup.replace('<apex:page', '<apex:page lightningStylesheets="true"');
+                            var Check=response[i].IsAvailableInTouch.replace('false','true');
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
                             $("#Name").val(response[i].name);
                             $("textarea#Markup").val(Markup);
-                            //console.log(Markup);    
+                            $("#Check").val(Check);
+                            console.log(Check);    
                             $("#ApexPageMarkerChangerForm").submit();
                         }          
                     //console.log('break'); // Object with id and time
@@ -150,6 +152,11 @@
                         </textarea>
                         <!--<input type="text" class="form-control" id="Markup" placeholder="For verification" required> -->
                     </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="Check">IsAvailableInTouch</label>
+                            <input type="text" class="form-control" id="Check" placeholder="For verification" required>
+                        </div>
                 </div>
                 <div class="panel-footer">
                     
