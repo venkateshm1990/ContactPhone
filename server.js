@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.put('/checkrecords', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Name,Markup,availableInTouch FROM salesforce.ApexPage WHERE Markup NOT LIKE $1',
+        conn.query('SELECT IsAvailableInTouch FROM salesforce.ApexPage WHERE Markup NOT LIKE $1',
         ['%lightningStylesheets="true"%'],
         function(err,result,fields){
             if(err){
