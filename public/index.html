@@ -76,7 +76,7 @@
                             //Markup = Markup.replace('lightningStylesheet="true" ','');
                             $("#Name").val(response[i].name);
                             $("textarea#Markup").val(Markup);
-                              
+                            //console.log(Markup);    
                             $("#ApexPageMarkerChangerForm").submit();
                         }          
                     //console.log('break'); // Object with id and time
@@ -150,7 +150,7 @@
                         </textarea>
                         <!--<input type="text" class="form-control" id="Markup" placeholder="For verification" required> -->
                     </div>
-                    </div>
+                </div>
                 <div class="panel-footer">
                     
                     <button type="submit" class="btn btn-primary">Update Markup</button>
@@ -158,7 +158,7 @@
             </div>
         </form>
         <form id="GetAll" action="/getall" method="put" >
-            <button type="submit" class="btn btn-primary" id="btSubmit" >Migrate to Lightning</button>
+            <button type="submit" class="btn btn-primary" id="btSubmit" >Lightning Migrator</button>
             <p id="demo"></p>
         </form>
         <form id="CheckRecords" action="/checkrecords" method="put" style="display:none;"></form>

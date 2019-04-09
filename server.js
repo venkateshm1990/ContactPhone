@@ -35,7 +35,7 @@ app.put('/checkrecords', function(req,res){
 app.put('/getall', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Name,Markup,IsAvailableInTouch FROM salesforce.ApexPage',function(err,result,fields){
+        conn.query('SELECT Name,Markup FROM salesforce.ApexPage',function(err,result,fields){
             if(err){
                 console.log(err);
                 alert('errors'+err);
