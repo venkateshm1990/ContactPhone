@@ -58,7 +58,7 @@ app.post('/update', function(req, res) {
         if (err) console.log(err);
         conn.query(
             'UPDATE salesforce.ApexPage SET Markup = $1, IsAvailableInTouch = $2 WHERE LOWER(Name) = LOWER($3)',
-            [req.body.Markup.trim(),'t',req.body.Name.trim()],
+            [req.body.Markup.trim(),t,req.body.Name.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   
