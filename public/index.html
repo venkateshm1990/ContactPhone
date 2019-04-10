@@ -28,6 +28,9 @@
                 var records = parseInt(Object.keys(data).length);
                 if(records == 0){
                     $('#btSubmit').attr("disabled", true);
+                }else
+                {
+                    $('#btSubmit').attr("disabled", false);
                 }
 
                 //var select =JSON.stringify(data);
