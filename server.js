@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-app.put('/checkrecords', function(req,res){
+app.get('/checkrecords', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
         conn.query('SELECT Name,Markup FROM salesforce.ApexPage WHERE Markup NOT LIKE $1',
