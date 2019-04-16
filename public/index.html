@@ -83,7 +83,8 @@
                             $("#ApexPageMarkerChangerForm").submit();
                         }          
                     //console.log('break'); // Object with id and time
-                    }    
+                    } 
+                    $('#btSubmit').attr("disabled", true);   
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem in finding component!"+errorMessage);
