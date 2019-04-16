@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.get('/checkrecords', function(req,res){
     pg.connect(process.env.DATABASE_URL, function (err, conn, _done) {
         if (err) console.log(err);
-        conn.query('SELECT Name,Markup FROM salesforce.ApexPage WHERE Markup NOT LIKE $1',
+        conn.query('SELECT Name,Markup FROM salesforce.ApexPage WHERE Markup NOT LIKE $1 and NamespacePrefix is null',
         ['%lightningStylesheets="true"%'],
         function(err,result,fields){
             if(err){
